@@ -1,0 +1,6 @@
+{
+  "name": "Barajas Terapéuticas",
+  "description": "Aplicación móvil para utilizar barajas terapéuticas en sesiones de consulta.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
