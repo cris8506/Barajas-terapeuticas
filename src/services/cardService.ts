@@ -19,6 +19,7 @@ import {
 } from 'firebase/storage';
 import { db, storage } from '../lib/firebase';
 import { Card, DeckSettings } from '../types';
+import { DEFAULT_CARDS } from '../data/defaultCards';
 
 const ALLOWED_MIME_TYPES = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
 
@@ -47,47 +48,56 @@ export function extractCardNumberFromFileName(fileName: string, fallbackNumber: 
 
 // Fetch active cards for public deck view
 export async function fetchActiveCardsByDeck(deckId: string): Promise<Card[]> {
+  const defaults = DEFAULT_CARDS[deckId] || [];
   try {
     const cardsRef = collection(db, 'cards');
-    // First attempt query with active == true
     const q = query(cardsRef, where('deckId', '==', deckId), where('active', '==', true));
     const snapshot = await getDocs(q);
     
-    const cards: Card[] = snapshot.docs.map(docSnap => ({
+    const dbCards: Card[] = snapshot.docs.map(docSnap => ({
       id: docSnap.id,
       ...(docSnap.data() as Omit<Card, 'id'>)
     }));
 
-    // Client-side sort by order asc to guarantee sorting regardless of index requirements
-    return cards.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+    // If there are uploaded Firestore cards, combine with default cards (preventing ID collision)
+    const combined = [...defaults, ...dbCards];
+    return combined.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   } catch (err) {
-    console.error('Error fetching active cards:', err);
-    throw err;
+    console.warn('Error fetching Firestore active cards, using default cards:', err);
+    return defaults;
   }
 }
 
 // Fetch all cards for admin panel (including inactive)
 export async function fetchAllCardsByDeck(deckId: string): Promise<Card[]> {
+  const defaults = DEFAULT_CARDS[deckId] || [];
   try {
     const cardsRef = collection(db, 'cards');
     const q = query(cardsRef, where('deckId', '==', deckId));
     const snapshot = await getDocs(q);
     
-    const cards: Card[] = snapshot.docs.map(docSnap => ({
+    const dbCards: Card[] = snapshot.docs.map(docSnap => ({
       id: docSnap.id,
       ...(docSnap.data() as Omit<Card, 'id'>)
     }));
 
-    return cards.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+    const combined = [...defaults, ...dbCards];
+    return combined.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
   } catch (err) {
-    console.error('Error fetching all cards:', err);
-    throw err;
+    console.warn('Error fetching all cards from Firestore:', err);
+    return defaults;
   }
 }
 
 // Fetch active card count for all decks for home screen
 export async function fetchActiveCardCountsByDeck(): Promise<Record<string, number>> {
   const counts: Record<string, number> = {};
+
+  // Pre-fill with default card counts
+  Object.keys(DEFAULT_CARDS).forEach(deckId => {
+    counts[deckId] = DEFAULT_CARDS[deckId].filter(c => c.active).length;
+  });
+
   try {
     const cardsRef = collection(db, 'cards');
     const q = query(cardsRef, where('active', '==', true));
@@ -101,7 +111,7 @@ export async function fetchActiveCardCountsByDeck(): Promise<Record<string, numb
       }
     });
   } catch (err) {
-    console.error('Error fetching active card counts:', err);
+    console.warn('Error fetching active card counts from Firestore:', err);
   }
   return counts;
 }

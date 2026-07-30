@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF9"/>
+      <stop offset="100%" stop-color="#FAF4EA"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="400" height="600" rx="32" ry="32" fill="#9CCFE8"/>
+  <rect x="12" y="12" width="376" height="576" rx="22" ry="22" fill="url(#cardBg)"/>
+  <rect x="22" y="22" width="356" height="556" rx="16" ry="16" fill="none" stroke="#A2CCE3" stroke-width="2" stroke-dasharray="7,5"/>
+
+  <!-- Top Foliage Left -->
+  <path d="M 60,65 C 45,50 65,30 80,45 C 90,55 75,75 60,65 Z" fill="none" stroke="#7BA9C6" stroke-width="2"/>
+  <path d="M 60,65 C 50,45 35,50 45,60" fill="none" stroke="#7BA9C6" stroke-width="2"/>
+  <path d="M 60,65 C 75,55 80,40 70,45" fill="none" stroke="#7BA9C6" stroke-width="2"/>
+  
+  <!-- Top Foliage Right -->
+  <path d="M 340,65 C 355,50 335,30 320,45 C 310,55 325,75 340,65 Z" fill="none" stroke="#7BA9C6" stroke-width="2"/>
+  <path d="M 340,65 C 350,45 365,50 355,60" fill="none" stroke="#7BA9C6" stroke-width="2"/>
+  <path d="M 340,65 C 325,55 320,40 330,45" fill="none" stroke="#7BA9C6" stroke-width="2"/>
+
+  <circle cx="190" cy="38" r="2.5" fill="#7BA9C6"/>
+  <circle cx="200" cy="38" r="3.5" fill="#7BA9C6"/>
+  <circle cx="210" cy="38" r="2.5" fill="#7BA9C6"/>
+  <polygon points="65,115 67,120 72,120 68,123 70,128 65,125 60,128 62,123 58,120 63,120" fill="none" stroke="#7BA9C6" stroke-width="1.5"/>
+  <polygon points="335,115 337,120 342,120 338,123 340,128 335,125 330,128 332,123 328,120 333,120" fill="none" stroke="#7BA9C6" stroke-width="1.5"/>
+
+  <text x="200" y="100" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="700" letter-spacing="2.5" fill="#4B779A">ABRIR LA CONVERSACIÓN</text>
+
+  <g transform="translate(150, 108)">
+    <path d="M0,8 Q15,0 30,8 T60,8" fill="none" stroke="#7BA9C6" stroke-width="2"/>
+    <path d="M100,8 Q85,0 70,8 T40,8" fill="none" stroke="#7BA9C6" stroke-width="2"/>
+    <path d="M50,11 C47,7 43,10 50,15 C57,10 53,7 50,11 Z" fill="#7BA9C6"/>
+  </g>
+
+  <!-- Question Text -->
+  <text text-anchor="middle" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" font-size="26" font-weight="700" fill="#1C3854">
+    <tspan x="200" y="180" dy="0">¿Qué pregunta</tspan>
+    <tspan x="200"  dy="36">te gustaría</tspan>
+    <tspan x="200"  dy="36">poder responder</tspan>
+    <tspan x="200"  dy="36">al finalizar?</tspan>
+  </text>
+
+  <!-- Illustration Area -->
+  <g transform="translate(50, 310)">
+
+    <!-- Open notebook with ?, checkmark, and star thought -->
+    <polygon points="75,205 150,212 225,205 220,175 150,180 80,175" fill="#FFFFFF" stroke="#3D5A75" stroke-width="2"/>
+    <line x1="150" y1="180" x2="150" y2="212" stroke="#3D5A75" stroke-width="2"/>
+    <text x="110" y="198" font-family="sans-serif" font-size="18" font-weight="bold" fill="#3D5A75">?</text>
+    <polyline points="180,192 185,198 193,188" fill="none" stroke="#4B779A" stroke-width="2"/>
+
+    <path d="M 195,95 C 195,80 215,70 230,85 C 245,70 265,80 265,95 C 265,110 230,130 230,130 C 230,130 195,110 195,95 Z" fill="#FFFFFF" stroke="#3D5A75" stroke-width="2"/>
+    <polygon points="230,85 233,92 240,92 235,97 237,104 230,100 223,104 225,97 220,92 227,92" fill="#F8C068"/>
+
+    <path d="M 140,90 C 100,90 100,150 140,150 C 180,150 180,90 140,90 Z" fill="#FDDFCE"/>
+    <path d="M 140,55 C 90,50 80,100 90,170 C 105,190 120,140 125,100 C 135,70 145,70 155,100 C 160,140 175,190 190,170 C 200,100 190,50 140,55 Z" fill="#203348" stroke="#162434" stroke-width="2"/>
+    <circle cx="140" cy="50" r="18" fill="#203348" stroke="#162434" stroke-width="2"/>
+    <path d="M 95,200 C 95,155 130,150 140,150 C 150,150 185,155 185,200 Z" fill="#68A5C7" stroke="#3D5A75" stroke-width="2"/>
+    
+  </g>
+
+  <!-- Bottom Leaf Ornament -->
+  <path d="M 40,560 C 55,545 75,565 60,580 C 50,590 30,575 40,560 Z" fill="none" stroke="#7BA9C6" stroke-width="2"/>
+  <path d="M 360,560 C 345,545 325,565 340,580 C 350,590 370,575 360,560 Z" fill="none" stroke="#7BA9C6" stroke-width="2"/>
+  <path d="M 200,573 C 197,569 193,572 200,577 C 207,572 203,569 200,573 Z" fill="#7BA9C6"/>
+</svg>
