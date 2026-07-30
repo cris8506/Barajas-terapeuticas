@@ -17,11 +17,11 @@ export const DEFAULT_CARDS: Record<string, Card[]> = {
     {
       id: 'default-01-02',
       deckId: '01-abrir-la-conversacion',
-      imageUrl: '/cards/01-abrir-la-conversacion/card-02.jpg',
+      imageUrl: '/cards/01-abrir-la-conversacion/card-02-original.png',
       storagePath: '',
       cardNumber: 2,
       order: 2,
-      internalName: 'card-02.jpg',
+      internalName: 'card-02-original.png',
       active: true,
       createdAt: null,
       updatedAt: null
